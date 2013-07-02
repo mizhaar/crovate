@@ -18,13 +18,15 @@ public class Validator {
      * @return 
      */
     private boolean checkToken(String token) {
+        if (token == null || token.isEmpty()) {
+            return false;
+        }
+        
         
         if (token.length() > 255) {
             return false;
         }
-        if (token == null || token.isEmpty()) {
-            return false;
-        }
+        
 
         return token.matches("[a-zA-Z]+[0-9]?+");
     }
@@ -75,6 +77,10 @@ public class Validator {
         }
     }
 
+    /**
+     * Application Entry Point.s
+     * @param args 
+     */
     public static void main(String[] args) {
         // TODO code application logic here
         Validator j = new Validator();
