@@ -49,24 +49,22 @@ public class Validator {
         String[] tokens = str.split(":");
 
         // Must have atleast single token
-        if (tokens.length < 1) {
+        if (tokens.length < 1){ 
             return false;
             
         }
-     
+        //string must not contain more than 10 tokens
+        if (tokens.length >= 11){
+          return false;
+          
+        }
 
         // Must begin with the string "alarm"
         if (!tokens[0].equals("alarm")) {
             return false;
         }
         
-        // Ensuring that the string doesnot contain more than 10 tokens
-        StringTokenizer st = new StringTokenizer(str, ":");
-        if(st.countTokens()>=10){
-            System.out.println("number of tokens should not be more than 10");
-            return false;
-        }       
-
+        
         for (int i = 0; i < tokens.length; i++) {
             if (checkToken(tokens[i]) == false) {
                 return false;
@@ -98,7 +96,7 @@ public class Validator {
         Validator j = new Validator();
         
          
-        j.printUtility("alarm:abc:adbc:aaa:sss:ddd:fff:ggg:hhhh:iii:vvv");
+        j.printUtility("alarm:abc:adbc:aaa:sss:ddd:fff:gg:kk:pp:rrr");
         j.printUtility("alarm:abc.");
 
         j.printUtility("alarm:abc4:www:aa1");
