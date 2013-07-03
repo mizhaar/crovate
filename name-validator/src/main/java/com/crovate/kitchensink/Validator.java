@@ -1,5 +1,5 @@
 package com.crovate.kitchensink;
-
+import java.util.*;
 /**
  *
  * @author plakhani
@@ -51,20 +51,32 @@ public class Validator {
         // Must have atleast single token
         if (tokens.length < 1) {
             return false;
+            
         }
+     
 
         // Must begin with the string "alarm"
         if (!tokens[0].equals("alarm")) {
             return false;
         }
+        
+        // Ensuring that the string doesnot contain more than 10 tokens
+        StringTokenizer st = new StringTokenizer(str, ":");
+        if(st.countTokens()>=10){
+            System.out.println("number of tokens should not be more than 10");
+            return false;
+        }       
 
         for (int i = 0; i < tokens.length; i++) {
             if (checkToken(tokens[i]) == false) {
                 return false;
+                
             }
         }
-
-        return true;
+         
+       return true;
+        
+        
     }
 
     public void printUtility(String str) {
@@ -84,11 +96,12 @@ public class Validator {
     public static void main(String[] args) {
         // TODO code application logic here
         Validator j = new Validator();
-
-        j.printUtility("alarm:abc:4abc");
+        
+         
+        j.printUtility("alarm:abc:adbc:aaa:sss:ddd:fff:ggg:hhhh:iii:vvv");
         j.printUtility("alarm:abc.");
 
-        j.printUtility("alarm:abc4");
+        j.printUtility("alarm:abc4:www:aa1");
         j.printUtility("alarm:abc.4");
 
         j.printUtility("alarm:abc.com");
